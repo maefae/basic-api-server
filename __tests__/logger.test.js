@@ -1,12 +1,41 @@
 "use strict";
 
-const { INET } = require("sequelize");
 const logger = require("../src/middleware/logger");
-
-//no tests in logger which is causing it to fail
 
 describe("testing logger", () => {
   it("exists", () => {
     expect(1).toEqual(1);
+  });
+});
+
+describe("TestingLogger", () => {
+  let consoleSpy;
+  let req = {};
+  let res = {};
+  let next = jest.fn(); // mocking the next method for testing
+  beforeEach(() => {
+    // attach a mock to the console
+    consoleSpy = jest.spyOn(console, "log").mockImplementation();
+  });
+  afterEach(() => {
+    //removeSpy
+    consoleSpy.mockRestore();
+  });
+
+  it("adds a timestamp", () => {
+    logger(req, res, next);
+    expect(req.timestamp).toBeTruthy();
+    expect(req.timestamp).toBeInstanceOf(Date);
+    expect(typeof req.timestamp).toEqual("object");
+  });
+
+  it("logs as expected", () => {
+    logger(req, res, next);
+    expect(consoleSpy).toHaveBeenCalledWith("logged at", req.timestamp);
+  });
+
+  it("calls next as expected", async () => {
+    logger(req, res, next);
+    expect(next).toHaveBeenCalled();
   });
 });

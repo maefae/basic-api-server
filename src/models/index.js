@@ -8,6 +8,7 @@ const foodSchema = require("./food.schema.js");
 // 'postgres://localhost:5432/api-server'
 // 'postgres://username:password@localhost:5432/api-app'  <-- if you have a username and password
 // will use ternary operator to setup sqlite for testing
+
 // const DATABASE_URL = process.env.DATABASE_URL;
 const DATABASE_URL = "sqlite:memory:";
 
