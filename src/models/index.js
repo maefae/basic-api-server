@@ -1,6 +1,6 @@
 "use strict";
 
-require("dotenv"), config();
+require("dotenv").config();
 const { Sequelize, DataTypes } = require("sequelize");
 const clothesSchema = require("./clothes.schema.js");
 const foodSchema = require("./food.schema.js");

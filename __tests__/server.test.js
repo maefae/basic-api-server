@@ -13,7 +13,7 @@ beforeAll(async () => {
   await sequelizeDatabase.sync();
 });
 
-afterAll(asnc() => {
+afterAll(async() => {
     await sequelizeDatabase.drop();
 });
 
