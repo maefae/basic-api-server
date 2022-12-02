@@ -2,7 +2,7 @@
     "development": {
       "username": "maefae",
       "password": null,
-      "database": "rest-api-app",
+      "database": "basic-api-server",
       "host": "127.0.0.1",
       "dialect": "postgres"
     },
